@@ -253,9 +253,60 @@ public class BoardDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			DBConnector.Close(con, ps, rs);
 		}
 		
 		return list;
+		
+		
+	}
+	
+	public static void commentDelete(int board_no, int comment_no){
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		try {
+			
+			String sql = " DELETE FROM s_comment "
+					+ " WHERE board_no = ? and comment_no = ? ";
+			
+			con = DBConnector.getCon();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, board_no);
+			ps.setInt(2, comment_no);
+			
+			ps.executeQuery();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			DBConnector.Close(con, ps, null);
+		}
+		
+	}
+	
+	public static void boardDelete(int board_no){
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		try {
+			
+			String sql = " DELETE FROM s_board "
+					+ " WHERE board_no = ? " ;
+			
+			con = DBConnector.getCon();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, board_no);
+			ps.executeQuery();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			DBConnector.Close(con, ps, null);
+		}
 		
 		
 	}

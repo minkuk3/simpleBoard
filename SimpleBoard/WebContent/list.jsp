@@ -29,33 +29,33 @@
 <div class="template">
 	<h2>리스트</h2>
 
+	<div class="tableBox">
+		<table>
 
-	<table>
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>날짜</th>
+				<th>조회수</th>
+			</tr>
 
-		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th>날짜</th>
-			<th>조회수</th>
-		</tr>
+			<%
+				if (list != null && list.size() > 0) {
+					for (BoardVO vo : list) {
+			%>
+			<tr>
+				<td><%=vo.getBoard_no()%></td>
+				<td onclick="clkTr(<%=vo.getBoard_no()%>)"><%=vo.getBoard_title()%></td>
+				<td><%=vo.getRegdate()%></td>
+				<td><%=vo.getCnt()%></td>
 
-		<%
-			if (list != null && list.size() > 0) {
-				for (BoardVO vo : list) {
-		%>
-		<tr>
-			<td><%=vo.getBoard_no()%></td>
-			<td onclick="clkTr(<%=vo.getBoard_no()%>)"><%=vo.getBoard_title()%></td>
-			<td><%=vo.getRegdate()%></td>
-			<td><%=vo.getCnt()%></td>
+			</tr>
 
-		</tr>
-
-		<%
-			}
-			}
-		%>
-	</table>
-
+			<%
+				}
+				}
+			%>
+		</table>
+	</div>
 
 </div>

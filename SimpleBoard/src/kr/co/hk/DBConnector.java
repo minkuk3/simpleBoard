@@ -43,9 +43,9 @@ public class DBConnector {
 			}
 		}
 		
-		if (rs != null) {
+		if (con != null) {
 			try {
-				rs.close();
+				con.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
